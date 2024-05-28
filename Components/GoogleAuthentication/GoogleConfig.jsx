@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth,  } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 const firebaseConfig = {
   apiKey: "AIzaSyATouFSg6GqvW6-U90CJ0krHlNjKhv7U1I",
   authDomain: "mail--box-client.firebaseapp.com",
@@ -11,5 +11,5 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
 
- export const auth = getAuth(app);
