@@ -4,18 +4,24 @@ import Signin from "./Components/SignIn/Signin";
 // import welcome from "./Components/Welcome to Expense/welcome";
 import CreateEmail from "./Components/CreateEmail/CreateEmail";
 import Welcome from "./Components/Welcome to Expense/welcome";
+import Nav from "./Components/Navbar/Nav";
+import Verticalbars from "./Components/Vertical bars/Verticalbars";
+import Home from "./Components/HomeItems/Home";
 
 function App() {
   return (
     <div className="App">
       <AuthContextProvider>
+        
         <BrowserRouter>
+        <Nav />
+        <Verticalbars/>
           <Routes>
-            <Route path="/" element={<Signin />}></Route>
+            <Route path="/" element={<Home/>}></Route>
+            <Route path="/signin" element={<Signin />}></Route>
             <Route path="/welcome" element={<Welcome />}></Route>
             <Route path="/Mailbox" element={<CreateEmail />}></Route>
           </Routes>
-        
         </BrowserRouter>
       </AuthContextProvider>
     </div>

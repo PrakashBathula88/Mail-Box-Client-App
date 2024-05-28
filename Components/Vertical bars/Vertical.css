@@ -1,0 +1,47 @@
+.vertical-bars-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 71px;
+  width: 250px;
+  height: 460px;
+
+  --gm3-sys-color-background: #ffffff00;
+  --gm3-sys-color-background-rgb: 255, 255, 255;
+  box-shadow: rgba(5, 5, 10, 0) 0px 0px 16px 20px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+.compose-button {
+  margin-bottom: 10px;
+  width: 200px;
+  height: 80px;
+  margin-left: 20px;
+  border-radius: 20px;
+  margin-top: 10px;
+  background-color: #c2e7ff;
+  color: black;
+  font-size: x-large;
+  border: 2px solid white;
+}
+
+ul {
+  list-style-type: none;
+  margin: 1px;
+}
+
+.All-li-tages {
+  display: flex;
+  align-items: center;
+  padding: 14px 10px;
+  font-style: italic;
+  cursor: pointer;
+}
+li svg {
+  margin-right: 10px;
+  font-size: 30px;
+}
+.All-li-tages:hover {
+  background-color: #f0f0f0;
+  width: 217px;
+}

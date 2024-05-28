@@ -75,11 +75,11 @@ input[type="email"]:focus {
   box-shadow: white;
 }
 
-.sending{
-    width: 100px;
-    height: 50px;
-    margin-left: 50px;
-    margin-top: 200px;
-    border-radius: 10px;
-    background-color: #0f572d;
+.sending {
+  width: 100px;
+  height: 50px;
+  margin-left: 50px;
+  margin-top: 200px;
+  border-radius: 10px;
+  background-color: #0f572d;
 }
