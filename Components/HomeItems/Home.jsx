@@ -1,16 +1,25 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-
+import "../HomeItems/Home.css";
+import { useNavigate } from "react-router-dom";
+import ReadMessage from "../ReadMessage/Readmessage";
 export default function Home() {
   const [emails, setemails] = useState([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     axios
       .get("https://mail--box-client-default-rtdb.firebaseio.com/Cart.json")
       .then((response) => {
+        const currentTime = new Date().toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
         const fetchEmails = Object.keys(response.data).map((key) => ({
           id: key,
           ...response.data[key],
+          timestamp: currentTime,
+          isNew: true,
+          isold: false,
         }));
         setemails(fetchEmails);
       })
@@ -18,15 +27,46 @@ export default function Home() {
         console.error(err);
       });
   }, []);
+
+  const readmesagenav = (readid) => {
+    axios
+      .patch(
+        `https://mail--box-client-default-rtdb.firebaseio.com/Cart/${readid}.json`,
+        {
+          isOld: true,
+          isNew: false,
+        }
+      )
+      .then(() => {
+        setemails((prevEmails) =>
+          prevEmails.map((email) =>
+            email.id === readid
+              ? { ...email, isOld: true, isNew: false }
+              : email
+          )
+        );
+        navigate(`/Read/${readid}`);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
   return (
-    <div>
+    <div className="All-items">
       <ul>
         {emails.map((email) => (
-          <div>
-            <li>{email.email}</li>
-            <li>{email.to}</li>
+          <div
+            key={email.id}
+            className={"emailItem"}
+            onClick={() => readmesagenav(email.id)}
+          >
+            <input type="Checkbox" />
+            {!email.isOld && <div className="blueDot"></div>}
             <li>{email.subject}</li>
             <li>{email.compose}</li>
+
+            {/* <li>{email.to}</li> */}
+            <li>{email.timestamp}</li>
           </div>
         ))}
       </ul>

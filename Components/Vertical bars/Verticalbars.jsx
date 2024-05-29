@@ -5,20 +5,31 @@ import { MdOutlineSnooze } from "react-icons/md";
 import { IoSendOutline } from "react-icons/io5";
 import { MdOutlineDrafts } from "react-icons/md";
 import { MdForwardToInbox } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 import "../Vertical bars/Vertical.css"
 export default function Verticalbars() {
+  const navigate=useNavigate();
+
+  const mailBox=()=>{
+    navigate('/Mailbox')
+  }
+
+  const homenav=()=>{
+    navigate('/');
+  }
+
   return (
     <div className="vertical-bars-container">
     <div >
       <div  >
-        <button className="compose-button">
+        <button className="compose-button" onClick={mailBox} >
           <BsPencil /> Compose
         </button>
       </div>
       <div className="menu-items">
         <ul>
-          <li className="All-li-tages">
-            <MdForwardToInbox />
+          <li className="All-li-tages" onClick={homenav}>
+            <MdForwardToInbox />  
             Inbox
           </li>
           <li className="All-li-tages">

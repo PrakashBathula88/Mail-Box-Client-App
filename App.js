@@ -7,6 +7,7 @@ import Welcome from "./Components/Welcome to Expense/welcome";
 import Nav from "./Components/Navbar/Nav";
 import Verticalbars from "./Components/Vertical bars/Verticalbars";
 import Home from "./Components/HomeItems/Home";
+import Readmessage from "./Components/ReadMessage/Readmessage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/signin" element={<Signin />}></Route>
             <Route path="/welcome" element={<Welcome />}></Route>
             <Route path="/Mailbox" element={<CreateEmail />}></Route>
+            <Route path="/Read/:readid" element={<Readmessage/>}></Route>
           </Routes>
         </BrowserRouter>
       </AuthContextProvider>

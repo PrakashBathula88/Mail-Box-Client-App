@@ -11,11 +11,13 @@ import {
 } from "../EmailConfig/Emailconfig";
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function CreateEmail() {
   const dispatch = useDispatch();
   const email = useSelector((state) => state.email);
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
+  const navigate=useNavigate();
 
   const handleFromChange = (e) => {
     dispatch(setfrom(e.target.value));
@@ -47,6 +49,7 @@ export default function CreateEmail() {
         }
       );
       alert(response.data.message || "Email sent sucessfully");
+      navigate('/')
       setfrom("");
       setTo("");
       setcompose("");
@@ -54,16 +57,15 @@ export default function CreateEmail() {
       setEditorState(editorState.createEmpty());
     } catch (err) {
       console.error(err);
-      alert("something Wrong");
     }
   };
   return (
     <>
       <form onSubmit={submiting} className="All-form-elements">
-        <div >
+        <div>
           <input className="email-sending"  
-            type="email"
-            placeholder="From Email"
+            type="text"
+            placeholder="Name"
             value={email.from}
             onChange={handleFromChange}
           ></input>
@@ -71,7 +73,7 @@ export default function CreateEmail() {
         <div>
           <input
             type="email"
-            placeholder="To Email"
+            placeholder="To"
             value={email.to}
             onChange={handletochange}
           ></input>
@@ -91,7 +93,9 @@ export default function CreateEmail() {
             placeholder="Compose email"
           ></Editor>
         </div>
-        <button type="submit" className="sending">Send</button>
+        <button type="submit" className="sending">
+          Send
+        </button>
       </form>
     </>
   );

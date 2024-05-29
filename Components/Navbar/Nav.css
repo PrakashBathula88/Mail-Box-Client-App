@@ -3,9 +3,11 @@ nav {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: rgba(135, 207, 235, 0.077);
   z-index: -1;
+  height: 70px;
+  margin: 10px;
+ 
 }
 
 nav ul {
@@ -18,7 +20,7 @@ nav ul {
 }
 
 nav ul div {
-  margin-right: 500px;
+  margin-right: 100px;
   justify-content: end;
   display: flex;
 }
@@ -37,16 +39,11 @@ nav ul li a {
   font-weight: bold;
   padding: 10px 15px;
   transition: 0.3s ease;
+  margin: 10px 4px 4px;
 }
-
-nav ul li a:hover {
-  background-color: #f1f3f4;
-  border-radius: 5px;
-}
-
 nav ul li:first-child a img {
-  height: 70px;
-  max-width: 410px;
+  width: 109px;
+  height: 40px;
   margin-left: 50px;
 }
 
@@ -54,4 +51,37 @@ nav ul li:first-child a img {
   float: right;
   display: flex;
   justify-content: end;
+}
+
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-container li {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+}
+
+.search-container li input[type="search"] {
+  padding: 10px 12px 14px 30px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 20px;
+  width: 800px;
+  margin-right: 200px;
+  border-radius: 10px;
+  background-color: rgba(135, 207, 235, 0.077);
+  transition: transform 0.3s ease;
+}
+.search-container :hover{
+  transform: scale(1.01);
+}
+.search-icon {
+  position: absolute;
+  right: 200px;
+  color: #333;
+
 }
