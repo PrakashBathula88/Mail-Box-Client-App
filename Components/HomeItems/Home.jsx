@@ -2,11 +2,11 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "../HomeItems/Home.css";
 import { useNavigate } from "react-router-dom";
-import ReadMessage from "../ReadMessage/Readmessage";
-import { MdDeleteForever } from "react-icons/md";
 export default function Home() {
   const [emails, setemails] = useState([]);
   const navigate = useNavigate();
+
+
   useEffect(() => {
     axios
       .get("https://mail--box-client-default-rtdb.firebaseio.com/Cart.json")
@@ -29,6 +29,7 @@ export default function Home() {
       });
   }, []);
 
+  
   const readmesagenav = (readid) => {
     axios
       .patch(
