@@ -7,6 +7,8 @@ import { MdOutlineDrafts } from "react-icons/md";
 import { MdForwardToInbox } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import "../Vertical bars/Vertical.css"
+import Home from "../HomeItems/Home";
+import Signin from "../SignIn/Signin";
 export default function Verticalbars() {
   const navigate=useNavigate();
 
@@ -18,6 +20,9 @@ export default function Verticalbars() {
     navigate('/');
   }
 
+  const sentnav=()=>{
+    navigate('/')
+  }
   return (
     <div className="vertical-bars-container">
     <div >
@@ -38,7 +43,7 @@ export default function Verticalbars() {
           <li className="All-li-tages">
             <MdOutlineSnooze /> Snoozed
           </li>
-          <li className="All-li-tages">
+          <li className="All-li-tages" onClick={sentnav}>
             <IoSendOutline /> Sent
           </li>
           <li className="All-li-tages">
