@@ -34,13 +34,17 @@
 .rdw-editor-main {
   border: 1px solid #ccc;
   border-radius: 3px;
-  min-height: 200px;
+  min-height: 240px;
   padding: 10px;
+  box-shadow: rgba(50, 50, 93, 0.051) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  margin-top: 20px;
+  border-radius: 10px;
 }
 
 .rdw-editor-toolbar {
   border: none;
-  background-color: #f9f9f922;
+  background-color: rgba(8, 4, 138, 0.107);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 .email-sending {
@@ -82,7 +86,7 @@ input[type="email"]:focus {
 .sending {
   width: 100px;
   height: 50px;
-  margin-top: 100px;
+  margin-top: 30px;
   border-radius: 10px;
   background-color: #0f572d;
 }

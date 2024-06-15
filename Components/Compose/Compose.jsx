@@ -2,13 +2,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import "../CreateEmail/crestamail.css";
-import {
-  setTo,
-  setcompose,
-  setfrom,
-  setsubject,
-} from "../EmailConfig/Emailconfig";
+import "./CreateEmail.css";
+import {setTo,setCompose,setFrom,setSubject, setProductDate,} from "../EmailConfig/EmailConfig";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -17,26 +12,30 @@ export default function CreateEmail() {
   const dispatch = useDispatch();
   const email = useSelector((state) => state.email);
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const handleFromChange = (e) => {
-    dispatch(setfrom(e.target.value));
+    dispatch(setFrom(e.target.value));
   };
 
-  const handletochange = (e) => {
+  const handleToChange = (e) => {
     dispatch(setTo(e.target.value));
   };
 
-  const handlesubjectchange = (e) => {
-    dispatch(setsubject(e.target.value));
+  const handleSubjectChange = (e) => {
+    dispatch(setSubject(e.target.value));
   };
 
-  const handlecomposechange = (editorState) => {
+  const handleComposeChange = (editorState) => {
     setEditorState(editorState);
-    dispatch(setcompose(editorState.getCurrentContent().getPlainText()));
+    dispatch(setCompose(editorState.getCurrentContent().getPlainText()));
   };
 
-  const submiting = async (event) => {
+  const handleDate = () => {
+    dispatch(setProductDate(new Date().toLocaleTimeString()));
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       const response = await axios.post(
@@ -46,14 +45,18 @@ export default function CreateEmail() {
           to: email.to,
           subject: email.subject,
           compose: email.composing,
+          productDate: new Date().toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+          }),
         }
       );
       alert(response.data.message || "Email sent sucessfully");
-      navigate('/')
-      setfrom("");
+      navigate("/");
+      setFrom("");
       setTo("");
-      setcompose("");
-      setsubject("");
+      setCompose("");
+      setSubject("");
       setEditorState(editorState.createEmpty());
     } catch (err) {
       console.error(err);
@@ -61,9 +64,10 @@ export default function CreateEmail() {
   };
   return (
     <>
-      <form onSubmit={submiting} className="All-form-elements">
+      <form onSubmit={handleSubmit} className="All-form-elements">
         <div>
-          <input className="email-sending"  
+          <input
+            className="email-sending"
             type="text"
             placeholder="Name"
             value={email.from}
@@ -75,7 +79,7 @@ export default function CreateEmail() {
             type="email"
             placeholder="To"
             value={email.to}
-            onChange={handletochange}
+            onChange={handleToChange}
           ></input>
         </div>
         <div>
@@ -83,17 +87,17 @@ export default function CreateEmail() {
             type="text"
             placeholder="Subject"
             value={email.subject}
-            onChange={handlesubjectchange}
+            onChange={handleSubjectChange}
           ></input>
         </div>
         <div>
           <Editor
             editorState={editorState}
-            onEditorStateChange={handlecomposechange}
+            onEditorStateChange={handleComposeChange}
             placeholder="Compose email"
           ></Editor>
         </div>
-        <button type="submit" className="sending">
+        <button type="submit" className="sending" onClick={handleDate}>
           Send
         </button>
       </form>

@@ -1,11 +1,5 @@
 import { useContext, createContext, useState } from "react";
-import {
-  GoogleAuthProvider,
-  signInWithPopup,
-  // signInWithRedirect,
-  // signOut,
-  // onAuthStateChanged,
-} from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../GoogleAuthentication/GoogleConfig";
 const AuthContext = createContext({
   token: "",
@@ -15,9 +9,9 @@ const AuthContext = createContext({
 });
 
 export const AuthContextProvider = ({ children }) => {
-  const initilatoken = localStorage.getItem("Auth");
-  const [token, settoken] = useState(initilatoken);
-  const Googlesignin = () => {
+  const initilaToken = localStorage.getItem("Auth");
+  const [token, setToken] = useState(initilaToken);
+  const googleSignin = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider);
   };
@@ -25,17 +19,17 @@ export const AuthContextProvider = ({ children }) => {
   const isloggedin = !!token;
 
   const loginHandler = (token) => {
-    settoken(token);
+    setToken(token);
     localStorage.setItem("Auth", token);
   };
   const logoutHandler = () => {
-    settoken(null);
+    setToken(null);
     localStorage.removeItem("Auth");
   };
+
   return (
     <AuthContext.Provider
-      value={{ Googlesignin, isloggedin, loginHandler, logoutHandler }}
-    >
+      value={{ googleSignin, isloggedin, loginHandler, logoutHandler }}>
       {children}
     </AuthContext.Provider>
   );

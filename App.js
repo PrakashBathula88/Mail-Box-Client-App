@@ -1,28 +1,28 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AuthContextProvider } from "./Components/Context/AuthContext";
 import Signin from "./Components/SignIn/Signin";
-// import welcome from "./Components/Welcome to Expense/welcome";
-import CreateEmail from "./Components/CreateEmail/CreateEmail";
-import Welcome from "./Components/Welcome to Expense/welcome";
-import Nav from "./Components/Navbar/Nav";
-import Verticalbars from "./Components/Vertical bars/Verticalbars";
+import CreateEmail from "./Components/Compose/Compose";
+import Nav from "./Components/NavBar/Nav";
+import VerticalBars from "./Components/VerticalBars/VerticalBars";
 import Home from "./Components/HomeItems/Home";
-import Readmessage from "./Components/ReadMessage/Readmessage";
-
+import ReadMessage from "./Components/ReadMessage/ReadMessage";
+import { useState } from "react";
 function App() {
+  const [emailsLength, setEmailsLength] = useState(0);
+  const setEmailLength = (emailCount)=>{
+    setEmailsLength(emailCount);
+  }
   return (
     <div className="App">
       <AuthContextProvider>
-        
         <BrowserRouter>
-        <Nav />
-        <Verticalbars/>
+          <Nav />
+          <VerticalBars  emailsLength={emailsLength}/>
           <Routes>
-            <Route path="/" element={<Home/>}></Route>
+            <Route path="/" element={<Home  setEmailLength={setEmailLength} />}></Route>
             <Route path="/signin" element={<Signin />}></Route>
-            <Route path="/welcome" element={<Welcome />}></Route>
             <Route path="/Mailbox" element={<CreateEmail />}></Route>
-            <Route path="/Read/:readid" element={<Readmessage/>}></Route>
+            <Route path="/Read/:readId" element={<ReadMessage />}></Route>
           </Routes>
         </BrowserRouter>
       </AuthContextProvider>

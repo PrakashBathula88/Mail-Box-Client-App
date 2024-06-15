@@ -4,10 +4,8 @@ nav {
   left: 0;
   width: 100%;
   background-color: rgba(135, 207, 235, 0.077);
-  z-index: -1;
   height: 70px;
-  margin: 10px;
- 
+  z-index: -12;
 }
 
 nav ul {
@@ -42,17 +40,11 @@ nav ul li a {
   margin: 10px 4px 4px;
 }
 nav ul li:first-child a img {
-  width: 109px;
+  width: 119px;
   height: 40px;
-  margin-left: 50px;
+  margin: 14px;
+  margin-left: 40px;
 }
-
-.linking-signin {
-  float: right;
-  display: flex;
-  justify-content: end;
-}
-
 .search-container {
   position: relative;
   display: flex;
@@ -66,22 +58,42 @@ nav ul li:first-child a img {
 }
 
 .search-container li input[type="search"] {
-  padding: 10px 12px 14px 30px;
+  padding: 10px 1px 10px 40px;
   border: 1px solid #ccc;
-  border-radius: 4px;
   font-size: 20px;
   width: 800px;
   margin-right: 200px;
-  border-radius: 10px;
-  background-color: rgba(135, 207, 235, 0.077);
+  border-radius: 24px;
+  background-color: #eaf1fb;
   transition: transform 0.3s ease;
 }
-.search-container :hover{
+.search-container :hover {
   transform: scale(1.01);
 }
 .search-icon {
   position: absolute;
   right: 200px;
   color: #333;
+}
 
+.question {
+  margin: 0px 0px 15px -80px;
+  font-size: 10px;
+}
+.question li {
+  padding: 4px;
+  cursor: pointer;
+  display: block;
+  height: 24px;
+  margin: 2px;
+  padding: 8px;
+  width: 36px;
+  color: #333333be;
+}
+.signin {
+  color: #333333be;
+}
+
+.question svg {
+  font-size: 26px;
 }

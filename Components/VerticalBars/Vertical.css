@@ -2,10 +2,11 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: 78px;
+  margin-top: 69.5px;
   width: 250px;
   height: 640px;
   background-color: rgba(135, 207, 235, 0.077);
+  z-index: 1000;
 }
 
 .compose-button {
@@ -14,7 +15,7 @@
   height: 80px;
   margin-left: 20px;
   border-radius: 20px;
-  margin-top: -1px;
+  margin-top: 16px;
   background-color: #c2e7ff;
   color: black;
   font-size: x-large;
@@ -40,4 +41,18 @@ li svg {
 .All-li-tages:hover {
   background-color: #f0f0f0;
   width: 217px;
+}
+
+.unread {
+  margin: 0px 70px;
+  color: green;
+  max-width: 100px;
+  font-size: 20px;
+}
+
+.unmsg {
+  display: grid;
+  font-size: 10px;
+  margin-left: -10px;
+  max-width: 100px;
 }

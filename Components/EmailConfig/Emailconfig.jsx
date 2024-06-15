@@ -6,24 +6,28 @@ const emailslice = createSlice({
     to: "",
     subject: "",
     composing: "",
+    productDate:"",
   },
   reducers: {
-    setfrom(state, action) {
+    setFrom(state, action) {
       state.from = action.payload;
     },
     setTo(state, action) {
       state.to = action.payload;
     },
-    setsubject(state, action) {
+    setSubject(state, action) {
       state.subject = action.payload;
     },
-    setcompose(state, action) {
+    setCompose(state, action) {
       state.composing = action.payload;
     },
+   setProductDate(state,action){
+    state.productDate=action.payload;
+   }
   },
 });
 
-export const { setfrom, setTo, setsubject, setcompose } = emailslice.actions;
+export const { setFrom, setTo, setSubject, setCompose,setProductDate } = emailslice.actions;
 export const store = configureStore({
   reducer: {
     email: emailslice.reducer,
